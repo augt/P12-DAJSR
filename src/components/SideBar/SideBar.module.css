@@ -1,0 +1,26 @@
+.sidebar_container {
+  background-color: #020203;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.sidebar_container ul {
+  padding: 0;
+}
+.sidebar_container img {
+  margin: 10px 27px 10px 26px;
+}
+
+.copyright_info {
+  color: white;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  position: absolute;
+  bottom: 60px;
+  font-size: 12px;
+}
