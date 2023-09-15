@@ -1,3 +1,20 @@
 main {
   display: flex;
 }
+
+.margins {
+  margin: 68px 90px 88px 107px;
+}
+
+.welcome_message {
+  font-size: 48px;
+  margin-bottom: 35px;
+}
+
+.user_firstname {
+  color: #ff0101;
+}
+
+.cheering_message {
+  margin-bottom: 77px;
+}
