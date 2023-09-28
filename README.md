@@ -1,3 +1,15 @@
+# SportSee App
+
+This is a React project to showcase the use of charts with the React framework. It can be used with mocked data, or with an API that is not provided in this repo but can be found on Openclassrooms' GitHub : [https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard).
+
+## Installation instructions
+
+In order to run this project locally on your machine, you need to create a .env file at the root of the project, and add the lines that can be found in the .env.example file.
+When this is done, run `npm install` and then `npm start` in your terminal at the root of the project.
+The project should run on port 3001 in order to work with the provided API that is not included in this repo.
+
+If you want to switch to the mocked data mode or API mode, you need to change the env variable `REACT_APP_IS_MOCKED_VERSION` to `true` or `false` and restart the project.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -9,7 +21,7 @@ In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Open [http://localhost:3001](http://localhost:3001) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.

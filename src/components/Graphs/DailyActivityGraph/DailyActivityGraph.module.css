@@ -1,0 +1,45 @@
+.daily_activity_graph_container {
+  background-color: #fbfbfb;
+  padding-top: 24px;
+}
+
+.daily_activity_graph_header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 47px 0 47px;
+}
+
+.daily_activity_graph_title {
+  font-size: 15px;
+  margin: 0;
+}
+
+.daily_activity_graph_legend {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  color: #74798c;
+  font-size: 14px;
+}
+
+.daily_activity_graph_legend img {
+  margin-right: 10px;
+}
+
+.daily_activity_graph_tooltip {
+  width: 39px;
+  height: 63px;
+  background-color: #e60000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.daily_activity_graph_tooltip_text {
+  font-weight: 500;
+  font-size: 8px;
+  color: #ffffff;
+}
