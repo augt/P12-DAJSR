@@ -1,6 +1,8 @@
 .daily_activity_graph_container {
   background-color: #fbfbfb;
   padding-top: 24px;
+  display: flex;
+  flex-direction: column;
 }
 
 .daily_activity_graph_header {

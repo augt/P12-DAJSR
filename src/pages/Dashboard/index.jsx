@@ -1,5 +1,6 @@
 import React from "react";
 import SideBar from "../../components/SideBar";
+import UserInfoCard from "../../components/UserInfoCard";
 import DashboardCSS from "./Dashboard.module.css";
 import {
   getUserPersonalData,
@@ -23,7 +24,16 @@ function Dashboard() {
         <div className={DashboardCSS.cheering_message}>
           Félicitations ! Vous avez explosé vos objectifs hier 👏
         </div>
-        <DailyActivityGraph sessions={dailyActivity} />
+        <div className={DashboardCSS.dashboard_layout}>
+          <div className={DashboardCSS.left_column}>
+            <DailyActivityGraph sessions={dailyActivity} />
+          </div>
+          <div className={DashboardCSS.user_key_data_cards_container}>
+            {userData.keyData.map((dataPoint) => (
+              <UserInfoCard dataPoint={dataPoint} key={dataPoint.name} />
+            ))}
+          </div>
+        </div>
       </div>
     </main>
   );

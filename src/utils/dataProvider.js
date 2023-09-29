@@ -57,7 +57,39 @@ export const mockedDailyActivity = {
 
 export function getUserPersonalData() {
   if (process.env.REACT_APP_IS_MOCKED_VERSION === "true") {
-    return mockedUserPersonalData;
+    const formatedKeyUserData = [
+      {
+        name: "Calories",
+        icon: "calories-icon",
+        amount:
+          [
+            mockedUserPersonalData.keyData.calorieCount.toString().slice(0, 1),
+            ",",
+            mockedUserPersonalData.keyData.calorieCount.toString().slice(1),
+          ].join("") + "kCal",
+      },
+      {
+        name: "Protéines",
+        icon: "protein-icon",
+        amount: mockedUserPersonalData.keyData.proteinCount.toString() + "g",
+      },
+      {
+        name: "Glucides",
+        icon: "carbs-icon",
+        amount:
+          mockedUserPersonalData.keyData.carbohydrateCount.toString() + "g",
+      },
+      {
+        name: "Lipides",
+        icon: "fat-icon",
+        amount: mockedUserPersonalData.keyData.lipidCount.toString() + "g",
+      },
+    ];
+
+    return {
+      userInfos: mockedUserPersonalData.userInfos,
+      keyData: formatedKeyUserData,
+    };
   }
 }
 
