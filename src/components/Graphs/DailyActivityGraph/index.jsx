@@ -47,8 +47,6 @@ function DailyActivityGraph(props) {
       </div>
       <ResponsiveContainer width={"100%"} height={300}>
         <BarChart
-          width={835}
-          height={300}
           data={sessions}
           margin={{
             top: 34,
@@ -60,7 +58,7 @@ function DailyActivityGraph(props) {
         >
           <CartesianGrid strokeDasharray="2 2" vertical={false} />
           <XAxis
-            dataKey="name"
+            dataKey="day"
             tickLine={false}
             tick={{ fontSize: 14, fill: "#9B9EAC" }}
             stroke="#DEDEDE"
@@ -75,12 +73,7 @@ function DailyActivityGraph(props) {
             dx={15}
             axisLine={false}
           />
-          <YAxis
-            yAxisId="right"
-            orientation="right"
-            stroke="#82ca9d"
-            hide={true}
-          />
+          <YAxis yAxisId="right" hide={true} />
           <Tooltip
             content={<CustomTooltip />}
             wrapperStyle={{ outline: "none" }}

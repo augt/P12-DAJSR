@@ -14,7 +14,7 @@ const mockedUserPersonalData = {
   },
 };
 
-export const mockedDailyActivity = {
+const mockedDailyActivity = {
   userId: 12,
   sessions: [
     {
@@ -55,6 +55,39 @@ export const mockedDailyActivity = {
   ],
 };
 
+const mockedAverageSessions = {
+  userId: 12,
+  sessions: [
+    {
+      day: 1,
+      sessionLength: 30,
+    },
+    {
+      day: 2,
+      sessionLength: 23,
+    },
+    {
+      day: 3,
+      sessionLength: 45,
+    },
+    {
+      day: 4,
+      sessionLength: 50,
+    },
+    {
+      day: 5,
+      sessionLength: 0,
+    },
+    {
+      day: 6,
+      sessionLength: 0,
+    },
+    {
+      day: 7,
+      sessionLength: 60,
+    },
+  ],
+};
 export function getUserPersonalData() {
   if (process.env.REACT_APP_IS_MOCKED_VERSION === "true") {
     const formatedKeyUserData = [
@@ -97,11 +130,21 @@ export function getDailyActivityData() {
   if (process.env.REACT_APP_IS_MOCKED_VERSION === "true") {
     const formatedDailyActivityData = mockedDailyActivity.sessions.map(
       (session) => ({
-        name: session.day.slice(-1),
+        day: session.day.slice(-1),
         kg: session.kilogram,
         Kcal: session.calories,
       })
     );
     return formatedDailyActivityData;
+  }
+}
+
+export function getAverageSessions() {
+  if (process.env.REACT_APP_IS_MOCKED_VERSION === "true") {
+    const days = ["L", "M", "M", "J", "V", "S", "D"];
+    const formatedAverageSessions = mockedAverageSessions.sessions.map(
+      (session, index) => ({ ...session, day: days[index] })
+    );
+    return formatedAverageSessions;
   }
 }

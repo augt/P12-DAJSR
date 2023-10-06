@@ -5,12 +5,15 @@ import DashboardCSS from "./Dashboard.module.css";
 import {
   getUserPersonalData,
   getDailyActivityData,
+  getAverageSessions,
 } from "../../utils/dataProvider";
 import DailyActivityGraph from "../../components/Graphs/DailyActivityGraph";
+import AverageSessionsGraph from "../../components/Graphs/AverageSessionsGraph";
 
 function Dashboard() {
   const userData = getUserPersonalData();
   const dailyActivity = getDailyActivityData();
+  const averageSessions = getAverageSessions();
   return (
     <main>
       <SideBar />
@@ -27,6 +30,9 @@ function Dashboard() {
         <div className={DashboardCSS.dashboard_layout}>
           <div className={DashboardCSS.left_column}>
             <DailyActivityGraph sessions={dailyActivity} />
+            <div className={DashboardCSS.lower_graphs_group}>
+              <AverageSessionsGraph sessions={averageSessions} />
+            </div>
           </div>
           <div className={DashboardCSS.user_key_data_cards_container}>
             {userData.keyData.map((dataPoint) => (

@@ -1,0 +1,31 @@
+.title {
+  position: absolute;
+  margin-block-start: unset;
+  margin-block-end: unset;
+  top: 29px;
+  left: 34px;
+  width: 147px;
+  font-size: 15px;
+  color: #ffffff;
+  opacity: 0.5;
+}
+.average_session_graph_background {
+  background-color: #f00;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 5px;
+  position: relative;
+}
+
+.tooltip_container {
+  width: 39px;
+  height: 25px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tooltip_text {
+  font-size: 8px;
+}
