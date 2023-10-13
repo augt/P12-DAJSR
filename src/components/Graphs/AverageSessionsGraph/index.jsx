@@ -34,8 +34,8 @@ function AverageSessionsGraph({ sessions }) {
         data={sessions}
         margin={{
           top: 40,
-          right: 0,
-          left: 4,
+          right: 15,
+          left: 15,
           bottom: 40,
         }}
       >
@@ -51,7 +51,6 @@ function AverageSessionsGraph({ sessions }) {
           tick={{ fontSize: 14, fill: "white", opacity: 0.8 }}
           tickMargin={20}
           axisLine={false}
-          style={{ transform: "scale(0.9)", transformOrigin: "bottom" }}
         />
         <YAxis hide={true} />
         <Tooltip

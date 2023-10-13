@@ -88,6 +88,45 @@ const mockedAverageSessions = {
     },
   ],
 };
+
+const mockedPerformance = {
+  userId: 12,
+  kind: {
+    1: "cardio",
+    2: "energy",
+    3: "endurance",
+    4: "strength",
+    5: "speed",
+    6: "intensity",
+  },
+  data: [
+    {
+      value: 80,
+      kind: 1,
+    },
+    {
+      value: 120,
+      kind: 2,
+    },
+    {
+      value: 140,
+      kind: 3,
+    },
+    {
+      value: 50,
+      kind: 4,
+    },
+    {
+      value: 200,
+      kind: 5,
+    },
+    {
+      value: 90,
+      kind: 6,
+    },
+  ],
+};
+
 export function getUserPersonalData() {
   if (process.env.REACT_APP_IS_MOCKED_VERSION === "true") {
     const formatedKeyUserData = [
@@ -122,6 +161,10 @@ export function getUserPersonalData() {
     return {
       userInfos: mockedUserPersonalData.userInfos,
       keyData: formatedKeyUserData,
+      score:
+        (mockedUserPersonalData.todayScore
+          ? mockedUserPersonalData.todayScore
+          : mockedUserPersonalData.score) * 100,
     };
   }
 }
@@ -146,5 +189,35 @@ export function getAverageSessions() {
       (session, index) => ({ ...session, day: days[index] })
     );
     return formatedAverageSessions;
+  }
+}
+
+export function getPerformance() {
+  if (process.env.REACT_APP_IS_MOCKED_VERSION === "true") {
+    function translatePerformanceKind(kind) {
+      switch (kind) {
+        case "cardio":
+          return "Cardio";
+        case "energy":
+          return "Energie";
+        case "endurance":
+          return "Endurance";
+        case "strength":
+          return "Force";
+        case "speed":
+          return "Vitesse";
+        case "intensity":
+          return "Intensité";
+        default:
+          return;
+      }
+    }
+    const formatedPerformanceData = mockedPerformance.data.map(
+      (item, index) => ({
+        ...item,
+        kind: translatePerformanceKind(mockedPerformance.kind[index + 1]),
+      })
+    );
+    return formatedPerformanceData;
   }
 }

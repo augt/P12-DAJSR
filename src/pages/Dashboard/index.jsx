@@ -6,14 +6,18 @@ import {
   getUserPersonalData,
   getDailyActivityData,
   getAverageSessions,
+  getPerformance,
 } from "../../utils/dataProvider";
 import DailyActivityGraph from "../../components/Graphs/DailyActivityGraph";
 import AverageSessionsGraph from "../../components/Graphs/AverageSessionsGraph";
+import PerformanceGraph from "../../components/Graphs/PerformanceGraph";
 
 function Dashboard() {
   const userData = getUserPersonalData();
   const dailyActivity = getDailyActivityData();
   const averageSessions = getAverageSessions();
+  const performance = getPerformance();
+
   return (
     <main>
       <SideBar />
@@ -32,6 +36,7 @@ function Dashboard() {
             <DailyActivityGraph sessions={dailyActivity} />
             <div className={DashboardCSS.lower_graphs_group}>
               <AverageSessionsGraph sessions={averageSessions} />
+              <PerformanceGraph performance={performance} />
             </div>
           </div>
           <div className={DashboardCSS.user_key_data_cards_container}>
