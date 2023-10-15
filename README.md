@@ -4,11 +4,16 @@ This is a React project to showcase the use of charts with the React framework. 
 
 ## Installation instructions
 
-In order to run this project locally on your machine, you need to create a .env file at the root of the project, and add the lines that can be found in the .env.example file.
+In order to run this project locally on your machine, you need to create a .env file at the root of the project, and add the lines that can be found in the `.env.example` file.
 When this is done, run `npm install` and then `npm start` in your terminal at the root of the project.
 The project should run on port 3001 in order to work with the provided API that is not included in this repo.
 
 If you want to switch to the mocked data mode or API mode, you need to change the env variable `REACT_APP_IS_MOCKED_VERSION` to `true` or `false` and restart the project.
+
+In order to view the mocked user or any user with the API, you will need to open [http://localhost:3001/](http://localhost:3001), followed by a user ID.
+
+for instance :
+[http://localhost:3001/12](http://localhost:3001/12)
 
 # Getting Started with Create React App
 

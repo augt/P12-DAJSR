@@ -14,7 +14,7 @@ root.render(
     <Router>
       <Header />
       <Routes>
-        <Route path="/" element={<Dashboard />} />
+        <Route path="/:id" element={<Dashboard />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </Router>

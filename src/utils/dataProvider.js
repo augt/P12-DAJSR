@@ -127,97 +127,123 @@ const mockedPerformance = {
   ],
 };
 
-export function getUserPersonalData() {
-  if (process.env.REACT_APP_IS_MOCKED_VERSION === "true") {
-    const formatedKeyUserData = [
+export async function getUser(id) {
+  function formatKeyUserData(userData) {
+    return [
       {
         name: "Calories",
         icon: "calories-icon",
         amount:
           [
-            mockedUserPersonalData.keyData.calorieCount.toString().slice(0, 1),
+            userData.keyData.calorieCount.toString().slice(0, 1),
             ",",
-            mockedUserPersonalData.keyData.calorieCount.toString().slice(1),
+            userData.keyData.calorieCount.toString().slice(1),
           ].join("") + "kCal",
       },
       {
         name: "Protéines",
         icon: "protein-icon",
-        amount: mockedUserPersonalData.keyData.proteinCount.toString() + "g",
+        amount: userData.keyData.proteinCount.toString() + "g",
       },
       {
         name: "Glucides",
         icon: "carbs-icon",
-        amount:
-          mockedUserPersonalData.keyData.carbohydrateCount.toString() + "g",
+        amount: userData.keyData.carbohydrateCount.toString() + "g",
       },
       {
         name: "Lipides",
         icon: "fat-icon",
-        amount: mockedUserPersonalData.keyData.lipidCount.toString() + "g",
+        amount: userData.keyData.lipidCount.toString() + "g",
       },
     ];
-
-    return {
-      userInfos: mockedUserPersonalData.userInfos,
-      keyData: formatedKeyUserData,
-      score:
-        (mockedUserPersonalData.todayScore
-          ? mockedUserPersonalData.todayScore
-          : mockedUserPersonalData.score) * 100,
-    };
   }
+
+  let userData;
+
+  if (process.env.REACT_APP_IS_MOCKED_VERSION === "false") {
+    const response = await fetch(`http://localhost:3000/user/${id}`);
+    const { data } = await response.json();
+    userData = data;
+  } else {
+    userData = mockedUserPersonalData;
+  }
+  return {
+    userInfos: userData.userInfos,
+    keyData: formatKeyUserData(userData),
+    score: (userData.todayScore ? userData.todayScore : userData.score) * 100,
+  };
 }
 
-export function getDailyActivityData() {
-  if (process.env.REACT_APP_IS_MOCKED_VERSION === "true") {
-    const formatedDailyActivityData = mockedDailyActivity.sessions.map(
-      (session) => ({
-        day: session.day.slice(-1),
-        kg: session.kilogram,
-        Kcal: session.calories,
-      })
+export async function getDailyActivity(id) {
+  let activityData;
+  if (process.env.REACT_APP_IS_MOCKED_VERSION === "false") {
+    const response = await fetch(`http://localhost:3000/user/${id}/activity`);
+    const { data } = await response.json();
+    activityData = data;
+  } else {
+    activityData = mockedDailyActivity;
+  }
+  const formatedDailyActivityData = activityData.sessions.map((session) => ({
+    day: session.day.slice(-1),
+    kg: session.kilogram,
+    Kcal: session.calories,
+  }));
+  return formatedDailyActivityData;
+}
+
+export async function getAverageSessions(id) {
+  let averageSessions;
+
+  if (process.env.REACT_APP_IS_MOCKED_VERSION === "false") {
+    const response = await fetch(
+      `http://localhost:3000/user/${id}/average-sessions`
     );
-    return formatedDailyActivityData;
+    const { data } = await response.json();
+    averageSessions = data;
+  } else {
+    averageSessions = mockedAverageSessions;
   }
+
+  const days = ["L", "M", "M", "J", "V", "S", "D"];
+  const formatedAverageSessions = averageSessions.sessions.map(
+    (session, index) => ({ ...session, day: days[index] })
+  );
+  return formatedAverageSessions;
 }
 
-export function getAverageSessions() {
-  if (process.env.REACT_APP_IS_MOCKED_VERSION === "true") {
-    const days = ["L", "M", "M", "J", "V", "S", "D"];
-    const formatedAverageSessions = mockedAverageSessions.sessions.map(
-      (session, index) => ({ ...session, day: days[index] })
+export async function getPerformance(id) {
+  let performance;
+
+  if (process.env.REACT_APP_IS_MOCKED_VERSION === "false") {
+    const response = await fetch(
+      `http://localhost:3000/user/${id}/performance`
     );
-    return formatedAverageSessions;
+    const { data } = await response.json();
+    performance = data;
+  } else {
+    performance = mockedPerformance;
   }
-}
-
-export function getPerformance() {
-  if (process.env.REACT_APP_IS_MOCKED_VERSION === "true") {
-    function translatePerformanceKind(kind) {
-      switch (kind) {
-        case "cardio":
-          return "Cardio";
-        case "energy":
-          return "Energie";
-        case "endurance":
-          return "Endurance";
-        case "strength":
-          return "Force";
-        case "speed":
-          return "Vitesse";
-        case "intensity":
-          return "Intensité";
-        default:
-          return;
-      }
+  function translatePerformanceKind(kind) {
+    switch (kind) {
+      case "cardio":
+        return "Cardio";
+      case "energy":
+        return "Energie";
+      case "endurance":
+        return "Endurance";
+      case "strength":
+        return "Force";
+      case "speed":
+        return "Vitesse";
+      case "intensity":
+        return "Intensité";
+      default:
+        return;
     }
-    const formatedPerformanceData = mockedPerformance.data.map(
-      (item, index) => ({
-        ...item,
-        kind: translatePerformanceKind(mockedPerformance.kind[index + 1]),
-      })
-    );
-    return formatedPerformanceData;
   }
+  const formatedPerformanceData = performance.data.map((item, index) => ({
+    ...item,
+    kind: translatePerformanceKind(performance.kind[index + 1]),
+  }));
+  return formatedPerformanceData;
 }
