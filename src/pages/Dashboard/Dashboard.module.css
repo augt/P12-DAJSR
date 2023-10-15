@@ -34,7 +34,7 @@ main {
   margin-top: 30px;
   display: flex;
   flex-direction: row;
-  gap: 30px;
+  justify-content: space-between;
 }
 
 .user_key_data_cards_container {

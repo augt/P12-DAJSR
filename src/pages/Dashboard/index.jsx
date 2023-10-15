@@ -11,6 +11,7 @@ import {
 import DailyActivityGraph from "../../components/Graphs/DailyActivityGraph";
 import AverageSessionsGraph from "../../components/Graphs/AverageSessionsGraph";
 import PerformanceGraph from "../../components/Graphs/PerformanceGraph";
+import ScoreGraph from "../../components/Graphs/ScoreGraph";
 
 function Dashboard() {
   const userData = getUserPersonalData();
@@ -37,6 +38,7 @@ function Dashboard() {
             <div className={DashboardCSS.lower_graphs_group}>
               <AverageSessionsGraph sessions={averageSessions} />
               <PerformanceGraph performance={performance} />
+              <ScoreGraph score={userData.score} />
             </div>
           </div>
           <div className={DashboardCSS.user_key_data_cards_container}>

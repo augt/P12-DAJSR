@@ -1,4 +1,39 @@
 .background {
   background-color: #fbfbfb;
   border-radius: 5px;
+  position: relative;
+  display: flex;
+
+  z-index: 0;
+}
+
+.title {
+  position: absolute;
+  margin: 24px 0 0 30px;
+  font-size: 15px;
+}
+
+.score {
+  z-index: 1;
+  position: absolute;
+  top: 38%;
+  left: 38%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.score_top_block {
+  z-index: 1;
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  margin-left: -15px;
+}
+
+.score_bottom_block {
+  z-index: 1;
+  color: #74798c;
+  width: 70px;
+  line-height: 26px;
 }
