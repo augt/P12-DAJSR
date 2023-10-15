@@ -22,7 +22,6 @@
 
 .dashboard_layout {
   display: flex;
-  gap: 31px;
 }
 
 .left_column {
@@ -34,7 +33,7 @@
   margin-top: 30px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  gap: 30px;
 }
 
 .user_key_data_cards_container {
@@ -42,4 +41,5 @@
   flex-direction: column;
   gap: 39px;
   width: 25%;
+  margin-left: 31px;
 }
