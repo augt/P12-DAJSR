@@ -36,7 +36,7 @@ function Dashboard() {
     performance === null
   ) {
     return (
-      <p>Une erreur s'est produire lors de la récupération de vos données</p>
+      <p>Une erreur s'est produite lors de la récupération de vos données</p>
     );
   }
 

@@ -6,7 +6,7 @@ function Error() {
   return (
     <main className={ErrorCSS.error_container}>
       <p>La page que vous demandez n'existe pas.</p>
-      <Link to={"/"}>Retourner sur le Dashboard</Link>
+      <Link to={"/12"}>Retourner sur le Dashboard</Link>
     </main>
   );
 }
